@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Fitocosmética y Perfumes 100% - Gestión y Cobranzas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #f4f8f5;
+      --card-bg: #ffffff;
+      --primary: #1e5631;
+      --primary-soft: #e8f3ec;
+      --primary-dark: #143d22;
+      --accent: #2e7d32;
+      --accent-light: #c8e6c9;
+      --accent-warn: #e65100;
+      --accent-warn-soft: #fff3e0;
+      --accent-danger: #c62828;
+      --accent-danger-soft: #ffebee;
+      --text-main: #1f2937;
+      --text-muted: #64748b;
+      --border-subtle: #dce7df;
+      --radius-sm: 10px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-sm: 0 2px 6px rgba(30, 86, 49, 0.05);
+      --shadow-md: 0 8px 20px rgba(30, 86, 49, 0.08);
+      --font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font);
+      background-color: var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.45;
+      padding-bottom: 90px;
+    }
+
+    .top-bar {
+      background: linear-gradient(135deg, #1b4d2c 0%, #2e7d32 100%);
+      color: #ffffff;
+      padding: 14px 18px;
+      position: sticky;
+      top: 0;
+      z-index: 99;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .top-bar-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 19px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      border: 2px solid var(--accent-light);
+    }
+    .brand-title {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      line-height: 1.2;
+    }
+    .brand-route {
+      font-size: 11px;
+      color: #bbf7d0;
+      font-weight: 600;
+    }
+    .rate-badge {
+      background: rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 6px 10px;
+      border-radius: var(--radius-sm);
+      text-align: right;
+    }
+    .rate-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: block;
+      color: #d1fae5;
+    }
+    .rate-value {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .app-container {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 14px 16px;
+    }
+
+    .promo-banner {
+      background: linear-gradient(135deg, #e8f5e9 0%, #dcedc8 100%);
+      border: 1px solid #c8e6c9;
+      border-left: 5px solid var(--accent);
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      box-shadow: var(--shadow-sm);
+    }
+    .promo-icon {
+      font-size: 20px;
+      line-height: 1;
+    }
+    .promo-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: #1b5e20;
+      flex: 1;
+    }
+
+    .quick-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .btn-quick {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 12px;
+      border-radius: var(--radius-md);
+      font-size: 13px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-quick-wa {
+      background: #25d366;
+      color: #ffffff;
+    }
+    .btn-quick-pay {
+      background: #ffffff;
+      color: var(--primary);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .metric-card {
+      background: var(--card-bg);
+      padding: 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+    }
+    .metric-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .metric-usd {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+    .metric-bs {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      margin-bottom: 14px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-sm);
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed var(--border-subtle);
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px 14px;
+      font-size: 14px;
+      font-family: inherit;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      background-color: #fafdfb;
+      color: var(--text-main);
+      outline: none;
+      transition: all 0.15s ease;
+    }
+    .form-control:focus {
+      border-color: var(--accent);
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.12);
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 13px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: inherit;
+      border-radius: var(--radius-md);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.05s ease, opacity 0.2s ease;
+    }
+    .btn:active {
+      transform: scale(0.985);
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+    .btn-accent {
+      background: var(--accent);
+      color: #ffffff;
+    }
+    .btn-wa {
+      background: #25d366;
+      color: #ffffff;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+    }
+    .btn-danger-sm {
+      background: var(--accent-danger-soft);
+      color: var(--accent-danger);
+      border: 1px solid #ffcdd2;
+      border-radius: 6px;
+      padding: 5px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .item-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    .item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background: #fbfdfc;
+      border: 1px solid #edf4ef;
+    }
+    .item-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .item-info-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .item-info-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .badge-stock {
+      background: var(--primary-soft);
+      color: var(--primary);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 10px;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.05);
+      z-index: 98;
+    }
+    .nav-btn {
+      background: transparent;
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .nav-btn.active {
+      color: var(--primary);
+      font-weight: 800;
+    }
+    .nav-icon {
+      font-size: 19px;
+    }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(3px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 999;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-box {
+      background: #ffffff;
+      width: 100%;
+      max-width: 480px;
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-md);
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pin-display {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 18px 0;
+    }
+    .pin-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid var(--border-subtle);
+    }
+    .pin-dot.filled {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+    .pin-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      max-width: 260px;
+      margin: 0 auto;
+    }
+    .pin-btn {
+      padding: 14px;
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      background: #fbfdfc;
+      color: var(--text-main);
+      cursor: pointer;
+    }
+    .pin-btn:active {
+      background: #e2ece5;
+    }
+
+    .tab-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 14px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .tab-btn {
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+      background: #f9fbf9;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+    .tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="top-bar-content">
+      <div class="brand-group" id="brandSecretTrigger">
+        <div class="logo-badge">🌿</div>
+        <div>
+          <div class="brand-title">Fitocosmética y Perfumes 100%</div>
+          <div class="brand-route" id="activeRouteDisplay">Ruta: Misael Fuenmayor</div>
+        </div>
+      </div>
+      <div class="rate-badge">
+        <span class="rate-label">Tasa BCV</span>
+        <span class="rate-value" id="topBcvDisplay">Bs. 896,12</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-container">
+
+    <section class="promo-banner" id="promoContainer">
+      <div class="promo-icon">📢</div>
+      <div class="promo-text" id="promoTextDisplay">
+        ¡Por cada 10 unidades cobradas al contado, gana 1 mini spray de 3ml de comisión especial!
+      </div>
+    </section>
+
+    <div class="quick-bar">
+      <button class="btn-quick btn-quick-wa" onclick="enviarResumenJornadaWA()">
+        <span>📲</span> Reporte WhatsApp
+      </button>
+      <button class="btn-quick btn-quick-pay" onclick="abrirModalCuentas()">
+        <span>💳</span> Datos de Pago
+      </button>
+    </div>
+
+    <!-- 1. COBRANZA CON LOS 5 MÉTODOS -->
+    <section class="card" id="viewCobro">
+      <div class="card-header">
+        <span class="card-title">💵 Registrar Cobro de Cliente</span>
+        <span class="badge-stock" id="badgeCobradorActivo">Misael</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Seleccionar Cliente</label>
+        <select class="form-control" id="cobroSelectCliente">
+          <option value="">-- Elige un cliente registrado --</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Monto ($ USD)</label>
+          <input type="number" step="0.01" class="form-control" id="cobroMontoUSD" placeholder="0.00" oninput="calcularEquivalenteBs()">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Equivalente BCV (Bs.)</label>
+          <input type="text" class="form-control" id="cobroMontoBs" placeholder="Bs. 0,00" readonly>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Método de Pago (5 Canales Oficiales)</label>
+        <select class="form-control" id="cobroMetodoPago" onchange="toggleCampoReferenciaCobro()">
+          <option value="Pago Móvil Banesco">📱 1. Pago Móvil Banesco</option>
+          <option value="Depósito en Cuenta de Ahorro Banesco">🏦 2. Depósito / Transferencia Cuenta de Ahorro</option>
+          <option value="Binance Pay (USDT)">🟡 3. Binance Pay (USDT)</option>
+          <option value="Efectivo USD ($)">💵 4. Efectivo Divisa ($)</option>
+          <option value="Efectivo Bolívares (Bs.)">💴 5. Efectivo Bolívares (Bs.)</option>
+        </select>
+      </div>
+
+      <div class="form-group" id="grpCobroReferencia">
+        <label class="form-label">N° de Referencia / Comprobante (Bancario o Binance)</label>
+        <input type="text" class="form-control" id="cobroReferencia" placeholder="Ej. 4 últimos dígitos o ref completa (7829)">
+      </div>
+
+      <button class="btn btn-wa" onclick="procesarCobroYEnviarWA()">
+        <span>📲</span> Registrar y Notificar Cobro
+      </button>
+    </section>
+
+    <div class="summary-grid">
+      <div class="metric-card">
+        <div class="metric-title">Total Cobrado Hoy</div>
+        <div class="metric-usd" id="metricTotalUSD">$0.00</div>
+        <div class="metric-bs" id="metricTotalBs">Bs. 0,00</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-title">Ganancia / Comisión</div>
+        <div class="metric-usd" id="metricComisionUSD">$0.00</div>
+        <div class="metric-bs" id="metricComisionBs">Bs. 0,00</div>
+      </div>
+    </div>
+
+    <!-- MI STOCK EN RUTA -->
+    <section class="card" id="viewStock" style="display:none;">
+      <div class="card-header">
+        <span class="card-title">📦 Mi Stock Asignado</span>
+        <button class="btn-quick btn-quick-pay" style="padding:4px 8px; font-size:11px;" onclick="renderStockLocal()">Refrescar</button>
+      </div>
+      <div class="item-list" id="listaStockLocal"></div>
+    </section>
+
+    <!-- CLIENTES DE LA RUTA -->
+    <section class="card" id="viewClientes" style="display:none;">
+      <div class="card-header">
+        <span class="card-title">👥 Directorio de Clientes</span>
+        <button class="btn-quick btn-quick-wa" style="padding:4px 8px; font-size:11px;" onclick="abrirModalNuevoCliente()">+ Nuevo</button>
+      </div>
+      <div class="item-list" id="listaClientesLocal"></div>
+    </section>
+
+    <!-- RENDICIÓN MULTIMONEDA CON LOS 5 MÉTODOS -->
+    <section class="card" id="viewRendicion" style="display:none;">
+      <div class="card-header">
+        <span class="card-title">📑 Rendición de Cuentas Oficial</span>
+      </div>
+      <p style="font-size:12px; color:var(--text-muted); margin-bottom:12px;">
+        Desglosa exactamente los montos recaudados en cada uno de los 5 canales de cobro:
+      </p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">1. Pago Móvil (Bs.)</label>
+          <input type="number" step="0.01" class="form-control" id="rendPagoMovil" placeholder="0.00">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Refs. Pago Móvil</label>
+          <input type="text" class="form-control" id="rendRefPagoMovil" placeholder="Ej. 4521, 9812">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">2. Depósito Cta Ahorro (Bs.)</label>
+          <input type="number" step="0.01" class="form-control" id="rendCtaAhorro" placeholder="0.00">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Refs. Depósitos</label>
+          <input type="text" class="form-control" id="rendRefCtaAhorro" placeholder="Ej. 10293847">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">3. Binance Pay (USDT)</label>
+          <input type="number" step="0.01" class="form-control" id="rendBinance" placeholder="0.00">
+        </div>
+        <div class="form-group">
+          <label class="form-label">TxID / Refs. Binance</label>
+          <input type="text" class="form-control" id="rendRefBinance" placeholder="Ej. OrderID / TxID">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">4. Efectivo Divisa ($)</label>
+          <input type="number" step="0.01" class="form-control" id="rendEfectivoUSD" placeholder="0.00">
+        </div>
+        <div class="form-group">
+          <label class="form-label">5. Efectivo Bolívares (Bs.)</label>
+          <input type="number" step="0.01" class="form-control" id="rendEfectivoBs" placeholder="0.00">
+        </div>
+      </div>
+
+      <button class="btn btn-primary" onclick="enviarRendicionWA()">
+        <span>📲</span> Enviar Rendición Completa a Central
+      </button>
+    </section>
+
+  </main>
+
+  <nav class="bottom-nav">
+    <button class="nav-btn active" onclick="navegarA('viewCobro', this)">
+      <span class="nav-icon">💵</span>
+      <span>Cobrar</span>
+    </button>
+    <button class="nav-btn" onclick="navegarA('viewStock', this)">
+      <span class="nav-icon">📦</span>
+      <span>Mi Stock</span>
+    </button>
+    <button class="nav-btn" onclick="navegarA('viewClientes', this)">
+      <span class="nav-icon">👥</span>
+      <span>Clientes</span>
+    </button>
+    <button class="nav-btn" onclick="navegarA('viewRendicion', this)">
+      <span class="nav-icon">📑</span>
+      <span>Rendir</span>
+    </button>
+  </nav>
+
+  <!-- MODAL CUENTAS BANCARIAS: SOLO LECTURA Y COMPARTIR (TOTALMENTE BLINDADO) -->
+  <div class="modal-overlay" id="modalCuentas">
+    <div class="modal-box">
+      <div class="modal-title" style="justify-content:space-between;">
+        <span>🏦 Métodos de Pago Oficiales</span>
+        <button class="btn-quick btn-quick-pay" style="padding:4px 8px; font-size:11px;" onclick="cerrarModales()">✕</button>
+      </div>
+
+      <div class="item-list" style="margin-bottom:14px;">
+        <div class="item-row">
+          <div>
+            <div class="item-info-title">📱 1. Pago Móvil Banesco</div>
+            <div class="item-info-sub" id="displayPMInfo">0412-3184756 | C.I. V-16.246.468</div>
+            <div class="item-info-sub" id="displayTitularInfo">Misael David Fuenmayor Aguirre</div>
+          </div>
+          <button class="badge-stock" style="border:none; cursor:pointer;" onclick="copiarAlPortapapeles('0134 04123184756 16246468')">Copiar</button>
+        </div>
+
+        <div class="item-row">
+          <div>
+            <div class="item-info-title">🏦 2. Depósito Cuenta de Ahorro Banesco</div>
+            <div class="item-info-sub" id="displayCtaAhorro">0134-0947-11-0002237032</div>
+            <div class="item-info-sub" id="displayTitularCta">Misael David Fuenmayor Aguirre</div>
+          </div>
+          <button class="badge-stock" style="border:none; cursor:pointer;" onclick="copiarAlPortapapeles(document.getElementById('displayCtaAhorro').innerText)">Copiar</button>
+        </div>
+
+        <div class="item-row">
+          <div>
+            <div class="item-info-title">🟡 3. Binance Pay (USDT)</div>
+            <div class="item-info-sub" id="displayBinanceID">ID / Cuenta: 584123184756</div>
+            <div class="item-info-sub">Recepción directa en USDT</div>
+          </div>
+          <button class="badge-stock" style="border:none; cursor:pointer;" onclick="copiarAlPortapapeles(document.getElementById('displayBinanceID').innerText.replace('ID / Cuenta: ', ''))">Copiar</button>
+        </div>
+
+        <div class="item-row">
+          <div>
+            <div class="item-info-title">💵 4. Efectivo Divisa ($)</div>
+            <div class="item-info-sub">Billetes en buen estado sin tachaduras</div>
+          </div>
+        </div>
+
+        <div class="item-row">
+          <div>
+            <div class="item-info-title">💴 5. Efectivo Bolívares (Bs.)</div>
+            <div class="item-info-sub">Calculado a la Tasa Oficial BCV del día</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <button class="btn btn-wa" onclick="compartirDatosPagoWA()">
+          <span>📲</span> Compartir por WhatsApp
+        </button>
+        <button class="btn btn-outline" onclick="cerrarModales()">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL NUEVO CLIENTE (EN RUTA) -->
+  <div class="modal-overlay" id="modalNuevoCliente">
+    <div class="modal-box">
+      <div class="modal-title">
+        <span>👤</span> Registrar Nuevo Cliente
+      </div>
+      <div class="form-group">
+        <label class="form-label">Nombre y Apellido</label>
+        <input type="text" class="form-control" id="newClienteNombre" placeholder="Ej. Farmacia Central">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Teléfono WhatsApp</label>
+        <input type="tel" class="form-control" id="newClienteTelefono" placeholder="Ej. 04141234567">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Zona o Dirección</label>
+        <input type="text" class="form-control" id="newClienteZona" placeholder="Ej. Cúa / Casco Central">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Saldo Inicial o Deuda ($)</label>
+        <input type="number" step="0.01" class="form-control" id="newClienteSaldo" placeholder="0.00">
+      </div>
+
+      <div class="form-row">
+        <button class="btn btn-wa" onclick="guardarClienteLocalYSincronizar()">
+          <span>📲</span> Guardar y Notificar
+        </button>
+        <button class="btn btn-outline" onclick="cerrarModales()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL PIN MAESTRO -->
+  <div class="modal-overlay" id="modalPin">
+    <div class="modal-box" style="text-align:center;">
+      <div class="modal-title" style="justify-content:center;">
+        <span>🔒</span> Panel Administrativo Maestro
+      </div>
+      <p style="font-size:12px; color:var(--text-muted);">
+        Introduce tu PIN de seguridad de 4 dígitos
+      </p>
+
+      <div class="pin-display">
+        <div class="pin-dot" id="dot0"></div>
+        <div class="pin-dot" id="dot1"></div>
+        <div class="pin-dot" id="dot2"></div>
+        <div class="pin-dot" id="dot3"></div>
+      </div>
+
+      <div class="pin-grid">
+        <button class="pin-btn" onclick="presionarTeclaPin('1')">1</button>
+        <button class="pin-btn" onclick="presionarTeclaPin('2')">2</button>
+        <button class="pin-btn" onclick="presionarTeclaPin('3')">3</button>
+        <button class="pin-btn" onclick="presionarTeclaPin('4')">4</button>
+        <button class="pin-btn" onclick="presionarTeclaPin('5')">5</button>
+        <button class="pin-btn" onclick="presionarTeclaPin('6')">6</button>
+        <button class="pin-btn" onclick="presionarTeclaPin('7')">7</button>
+        <button class="pin-btn" onclick="presionarTeclaPin('8')">8</button>
+        <button class="pin-btn" onclick="presionarTeclaPin('9')">9</button>
+        <button class="pin-btn" onclick="borrarPin()">⌫</button>
+        <button class="pin-btn" onclick="presionarTeclaPin('0')">0</button>
+        <button class="pin-btn" onclick="cerrarModales()">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL PANEL MAESTRO COMPLETO (PRIVADO EXCLUSIVAMENTE PARA MISAEL) -->
+  <div class="modal-overlay" id="modalMaster">
+    <div class="modal-box" style="max-width:580px;">
+      <div class="modal-title" style="justify-content:space-between;">
+        <span>🌿 Panel Central Maestro</span>
+        <button class="btn-quick btn-quick-pay" style="padding:4px 8px; font-size:11px;" onclick="cerrarModales()">Salir</button>
+      </div>
+
+      <div class="tab-bar">
+        <button class="tab-btn active" onclick="cambiarTabMaster('tabDespacho', this)">🚀 Despacho</button>
+        <button class="tab-btn" onclick="cambiarTabMaster('tabLaboratorio', this)">⚗️ Fórmulas</button>
+        <button class="tab-btn" onclick="cambiarTabMaster('tabClientesMaster', this)">👥 Todos Clientes</button>
+        <button class="tab-btn" onclick="cambiarTabMaster('tabCobradores', this)">🚴 Cobradores</button>
+        <button class="tab-btn" onclick="cambiarTabMaster('tabMateriaPrima', this)">🧪 Materia Prima</button>
+        <button class="tab-btn" onclick="cambiarTabMaster('tabMultirubro', this)">🛍️ Multirrubro</button>
+        <button class="tab-btn" onclick="cambiarTabMaster('tabAjustes', this)">🔒 Cuentas y Seguridad</button>
+      </div>
+
+      <!-- TAB 1: DESPACHO DE STOCK -->
+      <div id="tabDespacho" class="master-tab-content">
+        <div class="form-group">
+          <label class="form-label">Cobrador Destinatario</label>
+          <select class="form-control" id="despachoCobradorSelect"></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Producto a Asignar</label>
+          <select class="form-control" id="despachoProductoSelect"></select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Cantidad de Unidades</label>
+          <input type="number" class="form-control" id="despachoCantidad" placeholder="10">
+        </div>
+        <button class="btn btn-wa" onclick="generarDespachoWhatsApp()">
+          <span>📲</span> Generar Enlace y Despachar por WA
+        </button>
+      </div>
+
+      <!-- TAB 2: FÓRMULAS DINÁMICAS (CREAR NUEVAS + DESCUENTO AUTOMÁTICO DE MATERIA PRIMA + BORRAR) -->
+      <div id="tabLaboratorio" class="master-tab-content" style="display:none;">
+        <div class="card-header" style="margin-bottom:8px; padding-bottom:4px;">
+          <span style="font-size:12px; font-weight:700;">Catálogo de Fórmulas Guardadas</span>
+        </div>
+        <div class="item-list" id="listaFormulasMaster"></div>
+
+        <div style="background:#f0fdf4; border:1px solid #bbf7d0; border-radius:var(--radius-sm); padding:10px; margin-top:10px;">
+          <label class="form-label" style="color:#166534; font-weight:700;">Fabricar con Fórmula Seleccionada (Descuenta Materia Prima)</label>
+          <div class="form-row">
+            <input type="number" class="form-control" id="loteCantidadProducir" placeholder="Unid. a fabricar">
+            <button class="btn btn-accent" onclick="ejecutarFabricacionLote()">⚗️ Fabricar Lote</button>
+          </div>
+        </div>
+
+        <div style="margin-top:14px; padding-top:12px; border-top:1px dashed var(--border-subtle);">
+          <span style="font-size:13px; font-weight:800; color:var(--primary-dark); display:block; margin-bottom:8px;">
+            + Registrar Nueva Fórmula en el Sistema
+          </span>
+          <div class="form-row">
+            <input type="text" class="form-control" id="newFormulaNombre" placeholder="Nombre (ej. Crema Aloe Vera 30ml)">
+            <select class="form-control" id="newFormulaProductoSelect"></select>
+          </div>
+          <div style="margin-top:8px;">
+            <label class="form-label">Cantidades exactas por 1 unidad a producir:</label>
+            <div id="contenedorInsumosFormula" style="display:flex; flex-direction:column; gap:6px; max-height:140px; overflow-y:auto; border:1px solid var(--border-subtle); padding:8px; border-radius:var(--radius-sm); background:#fafdfb;"></div>
+          </div>
+          <button class="btn btn-primary" style="margin-top:10px;" onclick="guardarNuevaFormulaMaster()">
+            💾 Guardar Fórmula Permanentemente
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB 3: VISUALIZACIÓN MAESTRA DE TODOS LOS CLIENTES (PRIVADO) -->
+      <div id="tabClientesMaster" class="master-tab-content" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+          <span style="font-size:12px; font-weight:700; color:var(--text-muted);">Visualización Maestra de Todos los Clientes</span>
+          <select class="form-control" id="filtroClienteCobrador" style="width:auto; padding:4px 8px; font-size:11px;" onchange="renderClientesMaster()">
+            <option value="TODOS">Todos los Cobradores</option>
+          </select>
+        </div>
+        <div class="item-list" id="listaClientesMasterPrivado"></div>
+      </div>
+
+      <!-- TAB 4: GESTOR DE COBRADORES -->
+      <div id="tabCobradores" class="master-tab-content" style="display:none;">
+        <div class="item-list" id="listaCobradoresMaster"></div>
+        <div style="margin-top:12px; padding-top:12px; border-top:1px dashed var(--border-subtle);">
+          <div class="form-row">
+            <input type="text" class="form-control" id="newCobradorNombre" placeholder="Nombre (ej. Juan Pérez)">
+            <input type="tel" class="form-control" id="newCobradorTelefono" placeholder="584XXXXXXXXX">
+          </div>
+          <div class="form-row" style="margin-top:6px;">
+            <input type="number" class="form-control" id="newCobradorComision" placeholder="Comisión % (ej. 20)">
+            <button class="btn btn-wa" onclick="crearCobradorMaster()">+ Crear y Enviar Enlace</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 5: MATERIA PRIMA (INSUMOS) -->
+      <div id="tabMateriaPrima" class="master-tab-content" style="display:none;">
+        <div class="item-list" id="listaMateriaPrimaMaster"></div>
+        <div style="margin-top:12px; padding-top:12px; border-top:1px dashed var(--border-subtle);">
+          <div class="form-row">
+            <input type="text" class="form-control" id="newMPNombre" placeholder="Insumo (ej. Aceite Pepita Uva)">
+            <input type="text" class="form-control" id="newMPUnidad" placeholder="ml / gr / unid">
+          </div>
+          <div class="form-row" style="margin-top:6px;">
+            <input type="number" class="form-control" id="newMPStock" placeholder="Stock Inicial">
+            <input type="number" step="0.01" class="form-control" id="newMPCosto" placeholder="Costo Unit $">
+          </div>
+          <button class="btn btn-primary" style="margin-top:8px;" onclick="agregarMateriaPrimaMaster()">+ Guardar Insumo</button>
+        </div>
+      </div>
+
+      <!-- TAB 6: MULTIRRUBRO (PRODUCTOS) -->
+      <div id="tabMultirubro" class="master-tab-content" style="display:none;">
+        <div class="item-list" id="listaProductosMaster"></div>
+        <div style="margin-top:12px; padding-top:12px; border-top:1px dashed var(--border-subtle);">
+          <div class="form-row">
+            <input type="text" class="form-control" id="newProdNombre" placeholder="Producto (Perfume, Sábanas, etc.)">
+            <input type="text" class="form-control" id="newProdCategoria" placeholder="Categoría">
+          </div>
+          <div class="form-row" style="margin-top:6px;">
+            <input type="number" class="form-control" id="newProdStock" placeholder="Cantidad Inicial">
+            <input type="number" step="0.01" class="form-control" id="newProdPrecio" placeholder="Precio Venta $">
+          </div>
+          <button class="btn btn-primary" style="margin-top:8px;" onclick="agregarProductoMaster()">+ Guardar Producto</button>
+        </div>
+      </div>
+
+      <!-- TAB 7: SEGURIDAD, PARÁMETROS Y EDICIÓN EXCLUSIVA DE CUENTAS (PROTEGIDO) -->
+      <div id="tabAjustes" class="master-tab-content" style="display:none;">
+        <span style="font-size:13px; font-weight:800; color:var(--primary-dark); display:block; margin-bottom:10px;">
+          🔒 Configuración Privada de Cuentas y Seguridad
+        </span>
+
+        <div class="form-group">
+          <label class="form-label">Número de Cuenta de Ahorro Banesco (20 dígitos)</label>
+          <input type="text" class="form-control" id="cfgCtaAhorro">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Binance Pay ID / Teléfono o Cuenta USDT</label>
+          <input type="text" class="form-control" id="cfgBinanceID">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Teléfono Pago Móvil</label>
+            <input type="text" class="form-control" id="cfgPMTelefono">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Cédula / RIF</label>
+            <input type="text" class="form-control" id="cfgPMCedula">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Titular de las Cuentas</label>
+          <input type="text" class="form-control" id="cfgTitular">
+        </div>
+
+        <div style="border-top:1px dashed var(--border-subtle); margin:14px 0; padding-top:12px;">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Tasa Oficial BCV (Bs.)</label>
+              <input type="number" step="0.01" class="form-control" id="cfgTasaBCV">
+            </div>
+            <div class="form-group">
+              <label class="form-label">PIN Maestro (4 dígitos)</label>
+              <input type="password" maxlength="4" class="form-control" id="cfgPinMaestro">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Texto de Promoción Superior</label>
+            <textarea class="form-control" id="cfgPromoTexto" rows="2"></textarea>
+            <button class="btn btn-wa" style="margin-top:6px;" onclick="enviarActualizacionPromoWA()">
+              <span>📲</span> Enviar Promo a Cobradores
+            </button>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" onclick="guardarAjustesMaster()">
+          💾 Guardar Parámetros y Cuentas Oficiales
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    const NUMERO_CENTRAL_ADMIN = "584123184756";
+    let contadorSecretTap = 0;
+    let timerSecretTap = null;
+    let pinBuffer = "";
+
+    const DEFAULT_DATA = {
+      config: {
+        tasaBCV: 896.12,
+        pin: "1960",
+        promo: "¡Por cada 10 unidades cobradas al contado, gana 1 mini spray de 3ml de comisión especial!",
+        bancoCuentaAhorro: "0134-0947-11-0002237032",
+        binanceID: "584123184756",
+        bancoTelefono: "0412-3184756",
+        bancoCedula: "V-16.246.468",
+        titular: "Misael David Fuenmayor Aguirre"
+      },
+      cobradores: [
+        { id: "misaelfuenmayor", nombre: "Misael Fuenmayor", telefono: "584123184756", comision: 100, esAdmin: true },
+        { id: "eglismarp", nombre: "Eglismar Piamo", telefono: "584264106893", comision: 20, esAdmin: false }
+      ],
+      materiaPrima: [
+        { id: "mp1", nombre: "Esencia Concentrada Pura", unidad: "ml", stock: 1500, costo: 0.12 },
+        { id: "mp2", nombre: "Alcohol Perfumol Fino", unidad: "ml", stock: 8000, costo: 0.02 },
+        { id: "mp3", nombre: "Fijador / Dimeticona", unidad: "ml", stock: 850, costo: 0.08 },
+        { id: "mp4", nombre: "Feromonas Concentradas", unidad: "ml", stock: 300, costo: 0.35 },
+        { id: "mp5", nombre: "Frasco Alfil / Single 30ml", unidad: "unid", stock: 120, costo: 0.85 },
+        { id: "mp6", nombre: "Frasco Roll-On 8.55ml", unidad: "unid", stock: 180, costo: 0.45 },
+        { id: "mp7", nombre: "Crema Base Unibase", unidad: "ml", stock: 2000, costo: 0.013 },
+        { id: "mp8", nombre: "Aceite Pepita de Uva", unidad: "ml", stock: 500, costo: 0.053 },
+        { id: "mp9", nombre: "Extracto HG Cebolla", unidad: "ml", stock: 500, costo: 0.040 },
+        { id: "mp10", nombre: "Nipasol Conservante", unidad: "gr", stock: 100, costo: 0.055 },
+        { id: "mp11", nombre: "Tarro Azul 30ml con tapa", unidad: "unid", stock: 150, costo: 0.40 }
+      ],
+      productos: [
+        { id: "pr1", nombre: "Perfume Alfil 30ml Concentrado", categoria: "Perfumería", stock: 25, precio: 10.00 },
+        { id: "pr2", nombre: "Perfume Roll-On 8.55ml", categoria: "Perfumería", stock: 40, precio: 3.50 },
+        { id: "pr3", nombre: "Mini Spray Muestra 3ml (70%)", categoria: "Muestras", stock: 60, precio: 1.50 },
+        { id: "pr4", nombre: "Crema Bio-Regeneradora 30ml", categoria: "Fitocosmética", stock: 15, precio: 6.00 }
+      ],
+      formulas: [
+        {
+          id: "f1",
+          nombre: "Perfume Alfil 30ml (33% Concentración)",
+          productoId: "pr1",
+          insumos: [
+            { mpId: "mp1", cant: 10 },
+            { mpId: "mp2", cant: 18 },
+            { mpId: "mp3", cant: 1 },
+            { mpId: "mp4", cant: 1 },
+            { mpId: "mp5", cant: 1 }
+          ]
+        },
+        {
+          id: "f2",
+          nombre: "Roll-On 8.55ml (50% Concentración)",
+          productoId: "pr2",
+          insumos: [
+            { mpId: "mp1", cant: 4.5 },
+            { mpId: "mp2", cant: 3.5 },
+            { mpId: "mp3", cant: 0.55 },
+            { mpId: "mp6", cant: 1 }
+          ]
+        },
+        {
+          id: "f3",
+          nombre: "Crema Bio-Regeneradora 30ml",
+          productoId: "pr4",
+          insumos: [
+            { mpId: "mp7", cant: 27.0 },
+            { mpId: "mp8", cant: 1.5 },
+            { mpId: "mp9", cant: 1.5 },
+            { mpId: "mp10", cant: 0.18 },
+            { mpId: "mp11", cant: 1 }
+          ]
+        }
+      ],
+      clientes: [
+        { id: "c1", nombre: "Farmacia La Fe", telefono: "04121112233", zona: "Ocumare", saldo: 25.00, cobradorId: "misaelfuenmayor" },
+        { id: "c2", nombre: "Boutique Miranda", telefono: "04149998877", zona: "Charallave", saldo: 40.00, cobradorId: "eglismarp" }
+      ],
+      cobrosHoy: [],
+      stockCobrador: {
+        misaelfuenmayor: { "pr1": 15, "pr2": 20, "pr3": 30 },
+        eglismarp: { "pr1": 10, "pr2": 15, "pr3": 10 }
+      }
+    };
+
+    function obtenerEstado() {
+      const data = localStorage.getItem("fito_gestion_db");
+      return data ? JSON.parse(data) : DEFAULT_DATA;
+    }
+    function guardarEstado(db) {
+      localStorage.setItem("fito_gestion_db", JSON.stringify(db));
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const cobradorParam = urlParams.get('cobrador');
+    let DB = obtenerEstado();
+
+    // Migraciones automáticas seguras
+    if (!DB.config.bancoCuentaAhorro && DB.config.bancoCuenta) {
+      DB.config.bancoCuentaAhorro = DB.config.bancoCuenta;
+    }
+    if (!DB.config.binanceID) {
+      DB.config.binanceID = "584123184756";
+    }
+
+    let COBRADOR_ACTIVO = DB.cobradores.find(c => c.id === cobradorParam);
+    if (!COBRADOR_ACTIVO) {
+      COBRADOR_ACTIVO = DB.cobradores.find(c => c.id === "misaelfuenmayor") || DB.cobradores[0];
+    }
+
+    function procesarSincronizacionURL() {
+      const cargaParam = urlParams.get('carga');
+      if (cargaParam) {
+        if (!DB.stockCobrador[COBRADOR_ACTIVO.id]) {
+          DB.stockCobrador[COBRADOR_ACTIVO.id] = {};
+        }
+        const lotes = cargaParam.split(',');
+        lotes.forEach(lote => {
+          const [prodId, cantStr] = lote.split(':');
+          const cant = parseInt(cantStr, 10) || 0;
+          DB.stockCobrador[COBRADOR_ACTIVO.id][prodId] = (DB.stockCobrador[COBRADOR_ACTIVO.id][prodId] || 0) + cant;
+        });
+        guardarEstado(DB);
+        alert("✅ ¡Carga de mercancía recibida y añadida a tu stock exitosamente!");
+        window.history.replaceState({}, document.title, window.location.pathname + (cobradorParam ? `?cobrador=${cobradorParam}` : ''));
+      }
+
+      const syncClienteParam = urlParams.get('nuevo_cliente');
+      if (syncClienteParam) {
+        try {
+          const rawCliente = JSON.parse(decodeURIComponent(atob(syncClienteParam)));
+          const existe = DB.clientes.find(c => c.nombre.toLowerCase() === rawCliente.nombre.toLowerCase());
+          if (!existe) {
+            DB.clientes.push(rawCliente);
+            guardarEstado(DB);
+            alert(`✅ Cliente "${rawCliente.nombre}" sincronizado e incorporado al sistema.`);
+          }
+        } catch (e) {
+          console.error("Error al sincronizar cliente", e);
+        }
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+
+      const syncPromoParam = urlParams.get('sync_promo');
+      if (syncPromoParam) {
+        DB.config.promo = decodeURIComponent(syncPromoParam);
+        guardarEstado(DB);
+        alert("📢 ¡Promoción oficial actualizada en tu dispositivo!");
+        window.history.replaceState({}, document.title, window.location.pathname + (cobradorParam ? `?cobrador=${cobradorParam}` : ''));
+      }
+    }
+
+    function initUI() {
+      procesarSincronizacionURL();
+
+      document.getElementById('activeRouteDisplay').innerText = `Ruta: ${COBRADOR_ACTIVO.nombre}`;
+      document.getElementById('badgeCobradorActivo').innerText = COBRADOR_ACTIVO.nombre.split(' ')[0];
+      document.getElementById('topBcvDisplay').innerText = `Bs. ${DB.config.tasaBCV.toLocaleString('es-VE', {minimumFractionDigits:2})}`;
+      document.getElementById('promoTextDisplay').innerText = DB.config.promo;
+
+      // Actualizar datos de pago visibles (Solo Lectura)
+      document.getElementById('displayCtaAhorro').innerText = DB.config.bancoCuentaAhorro;
+      document.getElementById('displayBinanceID').innerText = `ID / Cuenta: ${DB.config.binanceID}`;
+      document.getElementById('displayPMInfo').innerText = `${DB.config.bancoTelefono} | C.I. ${DB.config.bancoCedula}`;
+      document.getElementById('displayTitularInfo').innerText = DB.config.titular;
+      document.getElementById('displayTitularCta').innerText = DB.config.titular;
+
+      renderSelectClientes();
+      renderStockLocal();
+      renderClientesLocal();
+      actualizarMetricasDia();
+
+      const brandLogo = document.getElementById('brandSecretTrigger');
+      if (COBRADOR_ACTIVO.esAdmin) {
+        brandLogo.onclick = registrarSecretTap;
+      } else {
+        brandLogo.onclick = null;
+      }
+    }
+
+    function navegarA(viewId, btn) {
+      document.querySelectorAll('.app-container > section').forEach(sec => sec.style.display = 'none');
+      document.getElementById(viewId).style.display = 'block';
+
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    }
+
+    function calcularEquivalenteBs() {
+      const usd = parseFloat(document.getElementById('cobroMontoUSD').value) || 0;
+      const bs = usd * DB.config.tasaBCV;
+      document.getElementById('cobroMontoBs').value = bs > 0 ? `Bs. ${bs.toLocaleString('es-VE', {minimumFractionDigits:2})}` : 'Bs. 0,00';
+    }
+
+    function renderSelectClientes() {
+      const select = document.getElementById('cobroSelectCliente');
+      select.innerHTML = '<option value="">-- Elige un cliente registrado --</option>';
+      const clientesRuta = DB.clientes.filter(c => c.cobradorId === COBRADOR_ACTIVO.id || COBRADOR_ACTIVO.esAdmin);
+      clientesRuta.forEach(c => {
+        select.innerHTML += `<option value="${c.id}">${c.nombre} (Deuda: $${c.saldo.toFixed(2)})</option>`;
+      });
+    }
+
+    function renderStockLocal() {
+      const contenedor = document.getElementById('listaStockLocal');
+      contenedor.innerHTML = '';
+      const stockObj = DB.stockCobrador[COBRADOR_ACTIVO.id] || {};
+
+      DB.productos.forEach(prod => {
+        const cant = stockObj[prod.id] || 0;
+        contenedor.innerHTML += `
+          <div class="item-row">
+            <div>
+              <div class="item-info-title">${prod.nombre}</div>
+              <div class="item-info-sub">${prod.categoria} | Precio: $${prod.precio.toFixed(2)}</div>
+            </div>
+            <span class="badge-stock">${cant} disponibles</span>
+          </div>
+        `;
+      });
+    }
+
+    function renderClientesLocal() {
+      const contenedor = document.getElementById('listaClientesLocal');
+      contenedor.innerHTML = '';
+      const clientesRuta = DB.clientes.filter(c => c.cobradorId === COBRADOR_ACTIVO.id || COBRADOR_ACTIVO.esAdmin);
+
+      if (clientesRuta.length === 0) {
+        contenedor.innerHTML = '<p style="font-size:12px; color:var(--text-muted); text-align:center;">No hay clientes en esta ruta aún.</p>';
+        return;
+      }
+
+      clientesRuta.forEach(c => {
+        contenedor.innerHTML += `
+          <div class="item-row">
+            <div>
+              <div class="item-info-title">${c.nombre}</div>
+              <div class="item-info-sub">Tlf: ${c.telefono} | Zona: ${c.zona}</div>
+            </div>
+            <div class="item-actions">
+              <span class="badge-stock" style="color:var(--accent-warn); background:var(--accent-warn-soft);">$${c.saldo.toFixed(2)}</span>
+              <button class="btn-danger-sm" onclick="eliminarClienteLocal('${c.id}')">🗑️</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function eliminarClienteLocal(clienteId) {
+      if (!confirm("¿Deseas eliminar a este cliente?")) return;
+      DB.clientes = DB.clientes.filter(c => c.id !== clienteId);
+      guardarEstado(DB);
+      renderClientesLocal();
+      renderSelectClientes();
+    }
+
+    function actualizarMetricasDia() {
+      const cobros = DB.cobrosHoy.filter(c => c.cobradorId === COBRADOR_ACTIVO.id);
+      const totalUSD = cobros.reduce((acc, curr) => acc + curr.montoUSD, 0);
+      const totalBs = totalUSD * DB.config.tasaBCV;
+
+      const pctComision = COBRADOR_ACTIVO.comision / 100;
+      const comisionUSD = totalUSD * pctComision;
+      const comisionBs = comisionUSD * DB.config.tasaBCV;
+
+      document.getElementById('metricTotalUSD').innerText = `$${totalUSD.toFixed(2)}`;
+      document.getElementById('metricTotalBs').innerText = `Bs. ${totalBs.toLocaleString('es-VE', {minimumFractionDigits:2})}`;
+      document.getElementById('metricComisionUSD').innerText = `$${comisionUSD.toFixed(2)}`;
+      document.getElementById('metricComisionBs').innerText = `Bs. ${comisionBs.toLocaleString('es-VE', {minimumFractionDigits:2})}`;
+    }
+
+    function toggleCampoReferenciaCobro() {
+      const metodo = document.getElementById('cobroMetodoPago').value;
+      const grpRef = document.getElementById('grpCobroReferencia');
+      if (metodo.includes("Efectivo")) {
+        grpRef.style.display = 'none';
+      } else {
+        grpRef.style.display = 'block';
+      }
+    }
+
+    function procesarCobroYEnviarWA() {
+      const clienteId = document.getElementById('cobroSelectCliente').value;
+      const montoUSD = parseFloat(document.getElementById('cobroMontoUSD').value);
+      const metodo = document.getElementById('cobroMetodoPago').value;
+      const referencia = document.getElementById('cobroReferencia').value.trim();
+
+      if (!clienteId) {
+        alert("Por favor selecciona un cliente.");
+        return;
+      }
+      if (!montoUSD || montoUSD <= 0) {
+        alert("Ingresa un monto válido a cobrar.");
+        return;
+      }
+
+      // Si es método electrónico y no puso referencia, se le recuerda
+      if (!metodo.includes("Efectivo") && !referencia) {
+        if (!confirm("⚠️ No ingresaste el número de referencia del comprobante. ¿Deseas enviarlo sin referencia? (Se recomienda colocarla para constatar con el banco).")) {
+          document.getElementById('cobroReferencia').focus();
+          return;
+        }
+      }
+
+      const cliente = DB.clientes.find(c => c.id === clienteId);
+      const montoBs = montoUSD * DB.config.tasaBCV;
+      cliente.saldo = Math.max(0, cliente.saldo - montoUSD);
+
+      DB.cobrosHoy.push({
+        id: "cob_" + Date.now(),
+        clienteId: cliente.id,
+        clienteNombre: cliente.nombre,
+        cobradorId: COBRADOR_ACTIVO.id,
+        cobradorNombre: COBRADOR_ACTIVO.nombre,
+        montoUSD: montoUSD,
+        metodo: metodo,
+        referencia: referencia || "N/A (Efectivo)",
+        fecha: new Date().toLocaleString('es-VE')
+      });
+      guardarEstado(DB);
+
+      const refTexto = referencia ? `%0A🔢 *N° Comprobante / Ref:* ${referencia}` : '';
+
+      const textoWA = 
+        `🌿 *FITOCOSMÉTICA Y PERFUMES 100%*%0A` +
+        `💵 *COMPROBANTE DE COBRO REGISTRADO*%0A` +
+        `----------------------------------------%0A` +
+        `👤 *Cobrador:* ${COBRADOR_ACTIVO.nombre}%0A` +
+        `👥 *Cliente:* ${cliente.nombre}%0A` +
+        `💰 *Monto Abonado:* $${montoUSD.toFixed(2)} USD%0A` +
+        `🇻🇪 *Equivalente:* Bs. ${montoBs.toLocaleString('es-VE', {minimumFractionDigits:2})}%0A` +
+        `💳 *Método de Pago:* ${metodo}` + refTexto + `%0A` +
+        `📊 *Saldo Restante:* $${cliente.saldo.toFixed(2)} USD%0A` +
+        `📅 *Fecha:* ${new Date().toLocaleString('es-VE')}%0A` +
+        `----------------------------------------`;
+
+      document.getElementById('cobroMontoUSD').value = '';
+      document.getElementById('cobroMontoBs').value = '';
+      document.getElementById('cobroReferencia').value = '';
+      renderSelectClientes();
+      renderClientesLocal();
+      actualizarMetricasDia();
+
+      window.location.href = `https://wa.me/${NUMERO_CENTRAL_ADMIN}?text=${textoWA}`;
+    }
+
+    function enviarRendicionWA() {
+      const pmBs = parseFloat(document.getElementById('rendPagoMovil').value) || 0;
+      const refPM = document.getElementById('rendRefPagoMovil').value.trim() || 'Sin refs indicadas';
+      const ctaBs = parseFloat(document.getElementById('rendCtaAhorro').value) || 0;
+      const refCta = document.getElementById('rendRefCtaAhorro').value.trim() || 'Sin refs indicadas';
+      const binance = parseFloat(document.getElementById('rendBinance').value) || 0;
+      const refBin = document.getElementById('rendRefBinance').value.trim() || 'Sin refs indicadas';
+      const efUSD = parseFloat(document.getElementById('rendEfectivoUSD').value) || 0;
+      const efBs = parseFloat(document.getElementById('rendEfectivoBs').value) || 0;
+
+      const cobros = DB.cobrosHoy.filter(c => c.cobradorId === COBRADOR_ACTIVO.id);
+      const totalUSD = cobros.reduce((acc, curr) => acc + curr.montoUSD, 0);
+
+      // Recopilar también automáticamente todas las referencias de cobros individuales del día
+      const refsCobrosElectronicos = cobros
+        .filter(c => !c.metodo.includes("Efectivo") && c.referencia && c.referencia !== "N/A (Efectivo)")
+        .map(c => `• ${c.clienteNombre}: ${c.metodo} ($${c.montoUSD.toFixed(2)}) -> Ref: ${c.referencia}`)
+        .join('%0A');
+
+      const detalleRefsCobros = refsCobrosElectronicos ? `%0A----------------------------------------%0A*LISTA DE REFERENCIAS DEL DÍA:*%0A${refsCobrosElectronicos}` : '';
+
+      const mensaje = 
+        `📑 *RENDICIÓN DE CUENTAS OFICIAL*%0A` +
+        `🌿 *Fitocosmética y Perfumes 100%*%0A` +
+        `----------------------------------------%0A` +
+        `👤 *Ruta / Cobrador:* ${COBRADOR_ACTIVO.nombre}%0A` +
+        `💰 *Total Cobrado del Día:* $${totalUSD.toFixed(2)} USD%0A` +
+        `----------------------------------------%0A` +
+        `*DESGLOSE Y COMPROBANTES DE DEPÓSITO:*%0A` +
+        `📱 *1. Pago Móvil:* Bs. ${pmBs.toLocaleString('es-VE', {minimumFractionDigits:2})}%0A` +
+        `   ↳ *Refs PM:* ${refPM}%0A` +
+        `🏦 *2. Depósito Cta Ahorro:* Bs. ${ctaBs.toLocaleString('es-VE', {minimumFractionDigits:2})}%0A` +
+        `   ↳ *Refs Depósito:* ${refCta}%0A` +
+        `🟡 *3. Binance Pay (USDT):* ${binance.toFixed(2)} USDT%0A` +
+        `   ↳ *Refs Binance:* ${refBin}%0A` +
+        `💵 *4. Efectivo Divisa ($):* $${efUSD.toFixed(2)}%0A` +
+        `💴 *5. Efectivo Bolívares (Bs.):* Bs. ${efBs.toLocaleString('es-VE', {minimumFractionDigits:2})}` +
+        detalleRefsCobros + `%0A` +
+        `----------------------------------------%0A` +
+        `📅 *Fecha y Hora:* ${new Date().toLocaleString('es-VE')}`;
+
+      window.location.href = `https://wa.me/${NUMERO_CENTRAL_ADMIN}?text=${mensaje}`;
+    }
+
+    function enviarResumenJornadaWA() {
+      const cobros = DB.cobrosHoy.filter(c => c.cobradorId === COBRADOR_ACTIVO.id);
+      const totalUSD = cobros.reduce((acc, curr) => acc + curr.montoUSD, 0);
+      const totalBs = totalUSD * DB.config.tasaBCV;
+
+      const mensaje = 
+        `📊 *CORTE DE JORNADA*%0A` +
+        `👤 *Cobrador:* ${COBRADOR_ACTIVO.nombre}%0A` +
+        `💰 *Cobros realizados:* ${cobros.length}%0A` +
+        `💵 *Total Acumulado:* $${totalUSD.toFixed(2)} (Bs. ${totalBs.toLocaleString('es-VE', {minimumFractionDigits:2})})%0A` +
+        `📅 *Fecha:* ${new Date().toLocaleString('es-VE')}`;
+
+      window.location.href = `https://wa.me/${NUMERO_CENTRAL_ADMIN}?text=${mensaje}`;
+    }
+
+    function abrirModalNuevoCliente() {
+      document.getElementById('modalNuevoCliente').classList.add('active');
+    }
+
+    function guardarClienteLocalYSincronizar() {
+      const nombre = document.getElementById('newClienteNombre').value.trim();
+      const tlf = document.getElementById('newClienteTelefono').value.trim();
+      const zona = document.getElementById('newClienteZona').value.trim();
+      const saldo = parseFloat(document.getElementById('newClienteSaldo').value) || 0;
+
+      if (!nombre) {
+        alert("Ingresa el nombre del cliente.");
+        return;
+      }
+
+      const nuevoCliente = {
+        id: "cli_" + Date.now(),
+        nombre: nombre,
+        telefono: tlf,
+        zona: zona,
+        saldo: saldo,
+        cobradorId: COBRADOR_ACTIVO.id
+      };
+
+      DB.clientes.push(nuevoCliente);
+      guardarEstado(DB);
+      cerrarModales();
+      renderClientesLocal();
+      renderSelectClientes();
+
+      const payloadBase64 = btoa(encodeURIComponent(JSON.stringify(nuevoCliente)));
+      const syncURL = `${window.location.origin}${window.location.pathname}?nuevo_cliente=${payloadBase64}`;
+
+      const mensajeWA = 
+        `👤 *NUEVO CLIENTE REGISTRADO*%0A` +
+        `🌿 *Fitocosmética y Perfumes 100%*%0A` +
+        `----------------------------------------%0A` +
+        `• *Nombre:* ${nombre}%0A` +
+        `• *Teléfono:* ${tlf}%0A` +
+        `• *Zona:* ${zona}%0A` +
+        `• *Saldo Inicial:* $${saldo.toFixed(2)}%0A` +
+        `• *Registrado por:* ${COBRADOR_ACTIVO.nombre}%0A` +
+        `----------------------------------------%0A` +
+        `👉 *Toca aquí para agregarlo a tu base maestra:*%0A` +
+        `${syncURL}`;
+
+      window.location.href = `https://wa.me/${NUMERO_CENTRAL_ADMIN}?text=${mensajeWA}`;
+    }
+
+    /* MODAL DE CUENTAS PÚBLICO (SOLO LECTURA) */
+    function abrirModalCuentas() {
+      document.getElementById('modalCuentas').classList.add('active');
+    }
+
+    function compartirDatosPagoWA() {
+      const texto = 
+        `🌿 *DATOS DE PAGO OFICIALES (5 MÉTODOS)*%0A` +
+        `*Fitocosmética y Perfumes 100%*%0A` +
+        `━━━━━━━━━━━━━━━━━━━━━━%0A` +
+        `📱 *1. PAGO MÓVIL BANESCO:*%0A` +
+        `• Banco: Banesco (0134)%0A` +
+        `• Teléfono: ${DB.config.bancoTelefono}%0A` +
+        `• Cédula: ${DB.config.bancoCedula}%0A` +
+        `• Titular: ${DB.config.titular}%0A` +
+        `━━━━━━━━━━━━━━━━━━━━━━%0A` +
+        `🏦 *2. DEPÓSITO / TRANSFERENCIA CUENTA DE AHORRO:*%0A` +
+        `• Banco: Banesco (0134)%0A` +
+        `• N° Cuenta Ahorro: *${DB.config.bancoCuentaAhorro}*%0A` +
+        `• Titular: ${DB.config.titular}%0A` +
+        `━━━━━━━━━━━━━━━━━━━━━━%0A` +
+        `🟡 *3. BINANCE PAY (USDT):*%0A` +
+        `• ID / Teléfono USDT: *${DB.config.binanceID}*%0A` +
+        `━━━━━━━━━━━━━━━━━━━━━━%0A` +
+        `💵 *4. EFECTIVO DIVISA ($):*%0A` +
+        `• Entrega directa al cobrador oficial.%0A` +
+        `━━━━━━━━━━━━━━━━━━━━━━%0A` +
+        `💴 *5. EFECTIVO BOLÍVARES (Bs.):*%0A` +
+        `• Conforme a la Tasa Oficial BCV del día.%0A` +
+        `━━━━━━━━━━━━━━━━━━━━━━%0A` +
+        `*Por favor enviar comprobante de pago por este medio.*`;
+
+      window.location.href = `https://wa.me/?text=${texto}`;
+    }
+
+    function copiarAlPortapapeles(texto) {
+      navigator.clipboard.writeText(texto).then(() => {
+        alert("Copiado al portapapeles: " + texto);
+      });
+    }
+
+    /* GESTO SECRETO DE 5 TOQUES + PIN (ACCESO EXCLUSIVO MISAEL) */
+    function registrarSecretTap() {
+      contadorSecretTap++;
+      clearTimeout(timerSecretTap);
+      timerSecretTap = setTimeout(() => { contadorSecretTap = 0; }, 1800);
+
+      if (contadorSecretTap >= 5) {
+        contadorSecretTap = 0;
+        pinBuffer = "";
+        actualizarPinDots();
+        document.getElementById('modalPin').classList.add('active');
+      }
+    }
+
+    function presionarTeclaPin(num) {
+      if (pinBuffer.length < 4) {
+        pinBuffer += num;
+        actualizarPinDots();
+      }
+      if (pinBuffer.length === 4) {
+        setTimeout(verificarPin, 150);
+      }
+    }
+
+    function borrarPin() {
+      pinBuffer = pinBuffer.slice(0, -1);
+      actualizarPinDots();
+    }
+
+    function actualizarPinDots() {
+      for (let i = 0; i < 4; i++) {
+        const dot = document.getElementById(`dot${i}`);
+        if (i < pinBuffer.length) {
+          dot.classList.add('filled');
+        } else {
+          dot.classList.remove('filled');
+        }
+      }
+    }
+
+    function verificarPin() {
+      if (pinBuffer === DB.config.pin) {
+        cerrarModales();
+        abrirPanelMaestro();
+      } else {
+        alert("❌ PIN Incorrecto");
+        pinBuffer = "";
+        actualizarPinDots();
+      }
+    }
+
+    function cerrarModales() {
+      document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+    }
+
+    /* PANEL MAESTRO ADMINISTRATIVO */
+    function abrirPanelMaestro() {
+      document.getElementById('modalMaster').classList.add('active');
+      cargarDatosMaster();
+    }
+
+    function cambiarTabMaster(tabId, btn) {
+      document.querySelectorAll('.master-tab-content').forEach(c => c.style.display = 'none');
+      document.getElementById(tabId).style.display = 'block';
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (tabId === 'tabLaboratorio') cargarInsumosFormularioNuevaFormula();
+      if (tabId === 'tabClientesMaster') renderClientesMaster();
+    }
+
+    function cargarDatosMaster() {
+      const cobradorSel = document.getElementById('despachoCobradorSelect');
+      cobradorSel.innerHTML = '';
+      DB.cobradores.forEach(c => {
+        cobradorSel.innerHTML += `<option value="${c.id}">${c.nombre} (${c.esAdmin ? 'Admin' : 'Cobrador'})</option>`;
+      });
+
+      const prodSel = document.getElementById('despachoProductoSelect');
+      prodSel.innerHTML = '';
+      DB.productos.forEach(p => {
+        prodSel.innerHTML += `<option value="${p.id}">${p.nombre} (Stock Disp: ${p.stock})</option>`;
+      });
+
+      renderFormulasMaster();
+      renderMateriaPrimaMaster();
+      renderProductosMaster();
+      renderCobradoresMaster();
+      renderClientesMaster();
+
+      // Cargar campos seguros de configuración (Cuentas protegidas)
+      document.getElementById('cfgCtaAhorro').value = DB.config.bancoCuentaAhorro;
+      document.getElementById('cfgBinanceID').value = DB.config.binanceID;
+      document.getElementById('cfgPMTelefono').value = DB.config.bancoTelefono;
+      document.getElementById('cfgPMCedula').value = DB.config.bancoCedula;
+      document.getElementById('cfgTitular').value = DB.config.titular;
+      document.getElementById('cfgTasaBCV').value = DB.config.tasaBCV;
+      document.getElementById('cfgPromoTexto').value = DB.config.promo;
+      document.getElementById('cfgPinMaestro').value = DB.config.pin;
+
+      cargarInsumosFormularioNuevaFormula();
+    }
+
+    /* RENDER Y GESTIÓN DE FÓRMULAS */
+    function renderFormulasMaster() {
+      const fList = document.getElementById('listaFormulasMaster');
+      fList.innerHTML = '';
+      if (DB.formulas.length === 0) {
+        fList.innerHTML = '<p style="font-size:12px; color:var(--text-muted);">No hay fórmulas registradas.</p>';
+        return;
+      }
+
+      DB.formulas.forEach((f, idx) => {
+        const prod = DB.productos.find(p => p.id === f.productoId);
+        const prodNombre = prod ? prod.nombre : "Producto no asignado";
+        fList.innerHTML += `
+          <div class="item-row">
+            <div>
+              <div class="item-info-title">⚗️ ${f.nombre}</div>
+              <div class="item-info-sub">Produce: ${prodNombre} | ${f.insumos.length} insumos de stock requeridos</div>
+            </div>
+            <div class="item-actions">
+              <input type="radio" name="formulaSelect" value="${f.id}" ${idx === 0 ? 'checked' : ''}>
+              <button class="btn-danger-sm" onclick="eliminarFormulaMaster('${f.id}')">🗑️</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function cargarInsumosFormularioNuevaFormula() {
+      const prodSelect = document.getElementById('newFormulaProductoSelect');
+      prodSelect.innerHTML = '<option value="">-- Asignar Producto Final a Producir --</option>';
+      DB.productos.forEach(p => {
+        prodSelect.innerHTML += `<option value="${p.id}">${p.nombre}</option>`;
+      });
+
+      const contenedor = document.getElementById('contenedorInsumosFormula');
+      contenedor.innerHTML = '';
+      DB.materiaPrima.forEach(mp => {
+        contenedor.innerHTML += `
+          <div style="display:flex; justify-content:space-between; align-items:center; font-size:12px; gap:8px;">
+            <label style="flex:1;">${mp.nombre} (${mp.unidad})</label>
+            <input type="number" step="0.01" class="form-control input-insumo-formula" data-mpid="${mp.id}" placeholder="0.00" style="width:90px; padding:6px 8px; font-size:12px;">
+          </div>
+        `;
+      });
+    }
+
+    function guardarNuevaFormulaMaster() {
+      const nombre = document.getElementById('newFormulaNombre').value.trim();
+      const productoId = document.getElementById('newFormulaProductoSelect').value;
+
+      if (!nombre || !productoId) {
+        alert("Completa el nombre de la fórmula y selecciona el producto terminado asociado.");
+        return;
+      }
+
+      const inputs = document.querySelectorAll('.input-insumo-formula');
+      const insumos = [];
+
+      inputs.forEach(inp => {
+        const cant = parseFloat(inp.value) || 0;
+        if (cant > 0) {
+          insumos.push({
+            mpId: inp.dataset.mpid,
+            cant: cant
+          });
+        }
+      });
+
+      if (insumos.length === 0) {
+        alert("Debes indicar la cantidad de al menos 1 insumo de materia prima por unidad producida.");
+        return;
+      }
+
+      const nuevaFormula = {
+        id: "f_" + Date.now(),
+        nombre: nombre,
+        productoId: productoId,
+        insumos: insumos
+      };
+
+      DB.formulas.push(nuevaFormula);
+      guardarEstado(DB);
+      alert(`✅ Fórmula "${nombre}" guardada permanentemente en el sistema.`);
+
+      document.getElementById('newFormulaNombre').value = '';
+      inputs.forEach(inp => inp.value = '');
+      renderFormulasMaster();
+    }
+
+    function eliminarFormulaMaster(formulaId) {
+      if (!confirm("¿Deseas eliminar esta fórmula de laboratorio?")) return;
+      DB.formulas = DB.formulas.filter(f => f.id !== formulaId);
+      guardarEstado(DB);
+      renderFormulasMaster();
+    }
+
+    function ejecutarFabricacionLote() {
+      const formulaRadio = document.querySelector('input[name="formulaSelect"]:checked');
+      const cantLote = parseInt(document.getElementById('loteCantidadProducir').value, 10);
+
+      if (!formulaRadio || !cantLote || cantLote <= 0) {
+        alert("Selecciona la fórmula e introduce las unidades a fabricar.");
+        return;
+      }
+
+      const formula = DB.formulas.find(f => f.id === formulaRadio.value);
+      const producto = DB.productos.find(p => p.id === formula.productoId);
+
+      for (const insumo of formula.insumos) {
+        const mp = DB.materiaPrima.find(m => m.id === insumo.mpId);
+        const totalRequerido = insumo.cant * cantLote;
+        if (!mp || mp.stock < totalRequerido) {
+          alert(`Insumo insuficiente en stock: ${mp ? mp.nombre : 'Desconocido'}. Requiere ${totalRequerido} y solo hay ${mp ? mp.stock : 0}.`);
+          return;
+        }
+      }
+
+      formula.insumos.forEach(insumo => {
+        const mp = DB.materiaPrima.find(m => m.id === insumo.mpId);
+        mp.stock -= (insumo.cant * cantLote);
+      });
+      producto.stock += cantLote;
+
+      guardarEstado(DB);
+      alert(`✅ ¡Lote fabricado! Se produjeron ${cantLote} unidades de "${producto.nombre}" y se descontó la materia prima del stock.`);
+      cargarDatosMaster();
+    }
+
+    /* VISUALIZACIÓN MAESTRA DE CLIENTES */
+    function renderClientesMaster() {
+      const filtro = document.getElementById('filtroClienteCobrador');
+      filtro.innerHTML = '<option value="TODOS">Todos los Cobradores</option>';
+      DB.cobradores.forEach(cob => {
+        filtro.innerHTML += `<option value="${cob.id}">${cob.nombre}</option>`;
+      });
+
+      const valorFiltro = filtro.value || "TODOS";
+      const contenedor = document.getElementById('listaClientesMasterPrivado');
+      contenedor.innerHTML = '';
+
+      let lista = DB.clientes;
+      if (valorFiltro !== "TODOS") {
+        lista = lista.filter(c => c.cobradorId === valorFiltro);
+      }
+
+      if (lista.length === 0) {
+        contenedor.innerHTML = '<p style="font-size:12px; color:var(--text-muted); text-align:center;">No hay clientes registrados.</p>';
+        return;
+      }
+
+      lista.forEach(c => {
+        const cob = DB.cobradores.find(cb => cb.id === c.cobradorId);
+        const nomCob = cob ? cob.nombre : "Sin asignar";
+        contenedor.innerHTML += `
+          <div class="item-row">
+            <div>
+              <div class="item-info-title">${c.nombre}</div>
+              <div class="item-info-sub">Ruta: ${nomCob} | Tlf: ${c.telefono} | ${c.zona}</div>
+            </div>
+            <div class="item-actions">
+              <span class="badge-stock" style="color:var(--accent-warn); background:var(--accent-warn-soft);">$${c.saldo.toFixed(2)}</span>
+              <button class="btn-danger-sm" onclick="eliminarClienteMaster('${c.id}')">🗑️</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function eliminarClienteMaster(clienteId) {
+      if (!confirm("¿Deseas eliminar definitivamente este cliente del sistema?")) return;
+      DB.clientes = DB.clientes.filter(c => c.id !== clienteId);
+      guardarEstado(DB);
+      renderClientesMaster();
+      renderClientesLocal();
+      renderSelectClientes();
+    }
+
+    /* GESTIÓN DE COBRADORES */
+    function renderCobradoresMaster() {
+      const cList = document.getElementById('listaCobradoresMaster');
+      cList.innerHTML = '';
+      DB.cobradores.forEach(cob => {
+        const urlRuta = `${window.location.origin}${window.location.pathname}?cobrador=${cob.id}`;
+        cList.innerHTML += `
+          <div class="item-row">
+            <div>
+              <div class="item-info-title">${cob.nombre} ${cob.esAdmin ? '(Administrador)' : ''}</div>
+              <div class="item-info-sub">Tlf: ${cob.telefono} | Comisión: ${cob.comision}%</div>
+            </div>
+            <div class="item-actions">
+              <button class="badge-stock" style="border:none; cursor:pointer;" onclick="copiarAlPortapapeles('${urlRuta}')">Link</button>
+              ${!cob.esAdmin ? `<button class="btn-danger-sm" onclick="eliminarCobradorMaster('${cob.id}')">🗑️</button>` : ''}
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function crearCobradorMaster() {
+      const nombre = document.getElementById('newCobradorNombre').value.trim();
+      const tlf = document.getElementById('newCobradorTelefono').value.trim();
+      const comision = parseFloat(document.getElementById('newCobradorComision').value) || 20;
+
+      if (!nombre || !tlf) {
+        alert("Completa nombre y teléfono.");
+        return;
+      }
+
+      const id = nombre.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const nuevoCobrador = { id, nombre, telefono: tlf, comision, esAdmin: false };
+      DB.cobradores.push(nuevoCobrador);
+      guardarEstado(DB);
+
+      const urlRuta = `${window.location.origin}${window.location.pathname}?cobrador=${id}`;
+      const msg = 
+        `🌿 *FITOCOSMÉTICA Y PERFUMES 100%*%0A` +
+        `Hola ${nombre}, este es tu enlace de trabajo para gestionar tu ruta de cobranzas y ventas:%0A%0A` +
+        `👉 ${urlRuta}%0A%0A` +
+        `*Ábrelo y agrégalo a la pantalla de inicio de tu teléfono.*`;
+
+      window.location.href = `https://wa.me/${tlf}?text=${msg}`;
+    }
+
+    function eliminarCobradorMaster(cobradorId) {
+      if (!confirm("¿Deseas eliminar este cobrador?")) return;
+      DB.cobradores = DB.cobradores.filter(c => c.id !== cobradorId);
+      delete DB.stockCobrador[cobradorId];
+      guardarEstado(DB);
+      renderCobradoresMaster();
+      cargarDatosMaster();
+    }
+
+    /* MATERIA PRIMA Y PRODUCTOS */
+    function renderMateriaPrimaMaster() {
+      const mpList = document.getElementById('listaMateriaPrimaMaster');
+      mpList.innerHTML = '';
+      DB.materiaPrima.forEach(mp => {
+        mpList.innerHTML += `
+          <div class="item-row">
+            <div>
+              <div class="item-info-title">${mp.nombre}</div>
+              <div class="item-info-sub">Costo: $${mp.costo.toFixed(2)} / ${mp.unidad}</div>
+            </div>
+            <div class="item-actions">
+              <span class="badge-stock">${mp.stock} ${mp.unidad}</span>
+              <button class="btn-danger-sm" onclick="eliminarMateriaPrimaMaster('${mp.id}')">🗑️</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function eliminarMateriaPrimaMaster(mpId) {
+      if (!confirm("¿Deseas eliminar este insumo del inventario?")) return;
+      DB.materiaPrima = DB.materiaPrima.filter(m => m.id !== mpId);
+      guardarEstado(DB);
+      renderMateriaPrimaMaster();
+      cargarInsumosFormularioNuevaFormula();
+    }
+
+    function agregarMateriaPrimaMaster() {
+      const nom = document.getElementById('newMPNombre').value.trim();
+      const unid = document.getElementById('newMPUnidad').value.trim() || 'unid';
+      const stock = parseFloat(document.getElementById('newMPStock').value) || 0;
+      const costo = parseFloat(document.getElementById('newMPCosto').value) || 0;
+
+      if (!nom) return;
+      DB.materiaPrima.push({ id: "mp_" + Date.now(), nombre: nom, unidad: unid, stock, costo });
+      guardarEstado(DB);
+      renderMateriaPrimaMaster();
+      cargarInsumosFormularioNuevaFormula();
+      document.getElementById('newMPNombre').value = '';
+    }
+
+    function renderProductosMaster() {
+      const prList = document.getElementById('listaProductosMaster');
+      prList.innerHTML = '';
+      DB.productos.forEach(pr => {
+        prList.innerHTML += `
+          <div class="item-row">
+            <div>
+              <div class="item-info-title">${pr.nombre}</div>
+              <div class="item-info-sub">${pr.categoria} | Venta: $${pr.precio.toFixed(2)}</div>
+            </div>
+            <div class="item-actions">
+              <span class="badge-stock">${pr.stock} unid</span>
+              <button class="btn-danger-sm" onclick="eliminarProductoMaster('${pr.id}')">🗑️</button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function eliminarProductoMaster(prId) {
+      if (!confirm("¿Deseas eliminar este producto de la venta?")) return;
+      DB.productos = DB.productos.filter(p => p.id !== prId);
+      guardarEstado(DB);
+      renderProductosMaster();
+      cargarDatosMaster();
+    }
+
+    function agregarProductoMaster() {
+      const nom = document.getElementById('newProdNombre').value.trim();
+      const cat = document.getElementById('newProdCategoria').value.trim() || 'General';
+      const stock = parseInt(document.getElementById('newProdStock').value, 10) || 0;
+      const precio = parseFloat(document.getElementById('newProdPrecio').value) || 0;
+
+      if (!nom) return;
+      DB.productos.push({ id: "pr_" + Date.now(), nombre: nom, categoria: cat, stock, precio });
+      guardarEstado(DB);
+      renderProductosMaster();
+      cargarDatosMaster();
+      document.getElementById('newProdNombre').value = '';
+    }
+
+    function generarDespachoWhatsApp() {
+      const cobradorId = document.getElementById('despachoCobradorSelect').value;
+      const prodId = document.getElementById('despachoProductoSelect').value;
+      const cantidad = parseInt(document.getElementById('despachoCantidad').value, 10);
+
+      if (!cantidad || cantidad <= 0) {
+        alert("Ingresa una cantidad válida.");
+        return;
+      }
+
+      const cobrador = DB.cobradores.find(c => c.id === cobradorId);
+      const producto = DB.productos.find(p => p.id === prodId);
+
+      if (producto.stock < cantidad) {
+        alert(`Stock insuficiente en almacén. Solo tienes ${producto.stock} unidades.`);
+        return;
+      }
+
+      producto.stock -= cantidad;
+      guardarEstado(DB);
+
+      const urlCarga = `${window.location.origin}${window.location.pathname}?cobrador=${cobrador.id}&carga=${prodId}:${cantidad}`;
+
+      const textoWA = 
+        `📦 *DESPACHO DE MERCANCÍA ASIGNADO*%0A` +
+        `🌿 *Fitocosmética y Perfumes 100%*%0A` +
+        `----------------------------------------%0A` +
+        `👤 *Para:* ${cobrador.nombre}%0A` +
+        `📦 *Producto:* ${producto.nombre}%0A` +
+        `🔢 *Cantidad:* ${cantidad} unidades%0A` +
+        `----------------------------------------%0A` +
+        `👉 *Toca este enlace para cargar automáticamente a tu stock:*%0A` +
+        `${urlCarga}`;
+
+      window.location.href = `https://wa.me/${cobrador.telefono}?text=${textoWA}`;
+    }
+
+    function enviarActualizacionPromoWA() {
+      const nuevoTexto = document.getElementById('cfgPromoTexto').value.trim();
+      if (!nuevoTexto) return;
+      DB.config.promo = nuevoTexto;
+      guardarEstado(DB);
+
+      const promoCodificada = encodeURIComponent(nuevoTexto);
+      const urlSync = `${window.location.origin}${window.location.pathname}?sync_promo=${promoCodificada}`;
+
+      const msg = 
+        `📢 *NUEVA PROMOCIÓN OFICIAL*%0A` +
+        `🌿 *Fitocosmética y Perfumes 100%*%0A` +
+        `----------------------------------------%0A` +
+        `${nuevoTexto}%0A` +
+        `----------------------------------------%0A` +
+        `👉 *Toca este enlace para actualizar la promoción en tu teléfono:*%0A` +
+        `${urlSync}`;
+
+      window.location.href = `https://wa.me/?text=${msg}`;
+    }
+
+    /* GUARDAR AJUSTES EXCLUSIVOS DEL ADMINISTRADOR */
+    function guardarAjustesMaster() {
+      const cta = document.getElementById('cfgCtaAhorro').value.trim();
+      const bin = document.getElementById('cfgBinanceID').value.trim();
+      const tlf = document.getElementById('cfgPMTelefono').value.trim();
+      const ced = document.getElementById('cfgPMCedula').value.trim();
+      const tit = document.getElementById('cfgTitular').value.trim();
+      const tasa = parseFloat(document.getElementById('cfgTasaBCV').value);
+      const pin = document.getElementById('cfgPinMaestro').value.trim();
+
+      if (cta) DB.config.bancoCuentaAhorro = cta;
+      if (bin) DB.config.binanceID = bin;
+      if (tlf) DB.config.bancoTelefono = tlf;
+      if (ced) DB.config.bancoCedula = ced;
+      if (tit) DB.config.titular = tit;
+      if (tasa > 0) DB.config.tasaBCV = tasa;
+      if (pin.length === 4) DB.config.pin = pin;
+
+      guardarEstado(DB);
+      alert("✅ ¡Cuentas oficiales y parámetros de seguridad guardados con éxito!");
+      initUI();
+      cerrarModales();
+    }
+
+    window.addEventListener('DOMContentLoaded', initUI);
+  </script>
+</body>
+</html>
